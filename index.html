@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hi, Meyy — A Question…</title>
-  <meta name="description" content="A cute little question for Meyy 💖" />
+  <title>Happy Anniversary, Meyy</title>
+  <meta name="description" content="One year since the question, Meyy 💖" />
   <style>
     :root{
       --bg1:#fff5f8; /* soft pink */
@@ -87,21 +87,22 @@
   <div class="card" role="dialog" aria-labelledby="title">
     <div class="header">
       <h1 id="title">Hi, <span id="name">Meyy</span> 👋</h1>
-      <p>I have a tiny, slightly life‑changing question…</p>
+      <p>Remember a year ago, when I asked you a tiny, slightly life‑changing question?</p>
     </div>
     <div class="body">
       <!-- Screen 1 -->
       <section class="screen active center" id="s1" aria-live="polite">
-        <p class="lg">Ready?</p>
+        <p class="lg">You said yes 🥹</p>
+        <p style="color:var(--muted); margin-top:0">And it's been <b id="days">365</b> days since then.</p>
         <div class="btnrow">
-          <button class="btn" id="go">Okay…</button>
+          <button class="btn" id="go">So… one more question?</button>
         </div>
       </section>
 
       <!-- Screen 2 -->
       <section class="screen center" id="s2">
-        <p class="lg" style="margin-bottom:8px">Would you be my girlfriend?</p>
-        <p style="color:var(--muted); margin-top:0">(Answer carefully. Your choice may trigger excessive smiling 😊)</p>
+        <p class="lg" style="margin-bottom:8px">Happy 1st anniversary, Meyy 💕<br>Will you be my girlfriend for another year? (and the one after that, and the one after that…)</p>
+        <p style="color:var(--muted); margin-top:0">(Same rules as last time. Your answer may cause excessive smiling 😊)</p>
         <div class="btnrow" style="margin-top:6px">
           <button class="btn" id="yes">Yes 💖</button>
           <button class="btn secondary" id="no">No</button>
@@ -111,15 +112,15 @@
       <!-- Screen 3 (success) -->
       <section class="screen" id="s3">
         <div class="success">
-          <h2>Great choice, Meyy! 🥰</h2>
-          <p>You just made me the happiest guy. I promise to bring flowers, take you out, lots of kisses and real care every day.</p>
+          <h2>Still the best choice, Meyy! 🥰</h2>
+          <p>A year ago you made me the happiest guy, and you've done it every day since. Thank you for the laughs, the patience and all the little moments. I'm keeping my promise: flowers, dates, lots of kisses and real care, every day. Here's to year two. I love you 💖</p>
         </div>
       </section>
     </div>
-    <div class="footer">© <span id="year"></span> From Sam — with a brave heart.</div>
+    <div class="footer">© <span id="year"></span> From Sam — still with a brave heart, now a much happier one.</div>
   </div>
 
-  <div class="toast" id="toast">Wrong answer 😜</div>
+  <div class="toast" id="toast">Nice try. Still the wrong answer 😜</div>
   <div class="hearts" id="hearts" aria-hidden="true"></div>
 
   <script>
@@ -129,6 +130,10 @@
     const toast = $('#toast');
     const hearts = $('#hearts');
     $('#year').textContent = new Date().getFullYear();
+    // Days since the first "yes" (Oct 30, 2025)
+    const start = new Date(2025, 9, 30), now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    $('#days').textContent = Math.max(0, Math.round((today - start) / 864e5));
 
     go.addEventListener('click', ()=> switchTo(s2));
     yes.addEventListener('click', ()=> { switchTo(s3); burstHearts(); });
